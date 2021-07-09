@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
-@if (session('addBooking'))
+@if (session('bookingNotification'))
     <div class="alert alert-success alert-dismissible fade show">
-        {{session('addBooking')}}
+        {{session('bookingNotification')}}
 
     </div>
 @endif
 
 <h1> List of Bookings </h1>
-<a href="{{route('booking.create')}}" class="float-right btn-primary"> Book now </a>
+<a href="{{route('booking.create')}}" class="float-right"> <button class="btn btn-primary"> Book now</button> </a>
 
 <div class="row py-4">
     <div class="col">

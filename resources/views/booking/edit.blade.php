@@ -3,7 +3,7 @@
 
 <h2> Make reservation </h2>
 
-<form data-validate class="generic-form" method="POST" action="{{ route('booking.store') }}">
+<form data-validate class="generic-form" method="POST" action="{{ route('booking.update', $booking->id) }}">
 <!--  genre de securité il faut tjr ajouter @csrf pour se protéger contre les requettes CSRF(cross-site request forgery ) attacks -->
 @csrf
 @method('PATCH')
@@ -11,7 +11,7 @@
 <fieldset class="py-4"> 
 
 <label> <strong> Booking date: </strong></label> 
-    <select id="day" name="day" value="{{ $booking->booking_date->format(y-m-d) }}" class="@error('booking_date') {{'is-invalid'}} @enderror">
+    <select id="day" name="day" class="@error('booking_date') {{'is-invalid'}} @enderror">
         <?php for($i=1; $i<=31; $i++):?>
             <option value="<?=$i?>"><?=$i?></option>
         <?php endfor; ?>
