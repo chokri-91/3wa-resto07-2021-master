@@ -18,4 +18,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home'); // name: l'url aura le nom home //
 
-Route::resource('booking', 'BookingController')->middleware('auth')->middleware('admin'); // l'utilisateur ne peut etre dirigé sauf s'il est authentifié et page admin ne sera visible que pour l'admin//
+Route::resource('booking', 'BookingController')->middleware('auth'); // l'utilisateur ne peut etre dirigé sauf s'il est authentifié et page admin ne sera visible que pour l'admin//
+
+Route::get('/admin-dashboard', function(){
+    return view('admin.dashboard');
+})->middleware('auth','admin');
