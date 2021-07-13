@@ -20,7 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home'); // name: l'url aura l
 
 Route::resource('booking', 'BookingController')->middleware('auth'); // l'utilisateur ne peut etre dirigé sauf s'il est authentifié et page admin ne sera visible que pour l'admin//
 
-Route::get('order/index', 'AppController@order')->middleware('auth');
+Route::get('order/{any}', 'AppController@order')->middleware('auth')->where('any', '.*');
+//// la route accepte n'importe qu'elle vue (vuejs) en ecrivant any avec regular expression .* ///
 
 Route::get('/admin/dashboard', function(){
     return view('admin.dashboard');
