@@ -46,7 +46,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate($this->validationRules());
+        // $validatedData = $request->validate($this->validationRules());
         
         $booking = new Booking;
       
@@ -105,7 +105,7 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id, Booking $booking)
     {
-        $request->validate($this->validationRules());
+        $validatedData = $request->validate($this->validationRules());
 
         $date = $request->year. '-'. $request->month. '-' .$request->day;
         $time = $request->hour. ':'. $request->minutes;

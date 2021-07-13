@@ -20,6 +20,31 @@ Route::get('/home', 'HomeController@index')->name('home'); // name: l'url aura l
 
 Route::resource('booking', 'BookingController')->middleware('auth'); // l'utilisateur ne peut etre dirigé sauf s'il est authentifié et page admin ne sera visible que pour l'admin//
 
-Route::get('/admin-dashboard', function(){
+Route::get('/admin/dashboard', function(){
     return view('admin.dashboard');
 })->middleware('auth','admin');
+
+Route::resource('admin/meals', 'admin\MealController')->middleware('auth');
+
+/*
+Regrouper middleware / url / namespaces:
+
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('booking', 'BookingController');
+    Route::group([
+        'middleware' => 'admin',
+        'prefix' => 'admin',
+        'namespace' => 'Admin'
+        'namespace' => 'Admin',
+        'name' => 'admin.'
+    ], function () {
+        Route::get('dashboard', function () {
+            return view('admin.dashboard');
+        });
+        })->name('admin.dashboard');
+        Route::resource('meals', 'MealController');
+    });
+});
+
+*/

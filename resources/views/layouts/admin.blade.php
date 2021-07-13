@@ -43,7 +43,7 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="/admin/dashboard">
               <span data-feather="home"></span>
               Dashboard <span class="sr-only">(current)</span>
             </a>
@@ -55,9 +55,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('meals.index') }} ">
               <span data-feather="shopping-cart"></span>
-              Products
+              Meals
             </a>
           </li>
           <li class="nav-item">

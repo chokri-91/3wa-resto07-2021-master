@@ -15,7 +15,10 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('admin.meals.index',[
+            'meals' => Meal::paginate(15)
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.meals.create');
     }
 
     /**
@@ -36,7 +39,16 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate($this->validationRules());
+        
+        $validatedData['photo'] = $request->photo->store('uploads', 'public'); 
+        // photo sera enregistrée dans le dossier uploads dans public dans storage //
+
+        $meal = Meal::create($validatedData); 
+        // dans meal.php en ajoute la ligne protected $guarded = []; pour enregistrer toutes les données une seule fois//
+
+
+        return redirect()->route('meals.show', $meal);
     }
 
     /**
@@ -47,7 +59,7 @@ class MealController extends Controller
      */
     public function show(Meal $meal)
     {
-        //
+        return view('admin.meals.show', compact('meal'));
     }
 
     /**
@@ -82,5 +94,17 @@ class MealController extends Controller
     public function destroy(Meal $meal)
     {
         //
+    }
+
+    private function validationRules()
+    {
+        return [
+            'name' => 'required|string',
+            'photo' => 'image|required',
+            'description' => 'required|string',
+            'quantity' => 'required|integer',
+            'buy_price' => 'required|integer',
+            'sale_price' => 'required|integer'
+        ];
     }
 }
