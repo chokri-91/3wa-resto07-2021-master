@@ -38,6 +38,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('booking.index') }}">Booking</a>
                             </li>
+
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="{{ route('booking.index') }}">Dashboard</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('booking.index') }}">Order</a>
+                            </li> -->
                         @endauth
                     </ul>
 
