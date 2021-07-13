@@ -14,6 +14,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('booking.index') }}">Booking</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('order/index') }}">Order</a>
+                    </li>
                 </ul>
             @endauth
 

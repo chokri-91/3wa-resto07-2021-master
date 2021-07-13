@@ -19,11 +19,9 @@ class AppController extends Controller
         ]);
     }
 
-    public function about()
+    public function order()
     {
-        return view('about', [
-            'todos' => Todo::all()
-        ]);
+        return view('order.index');
     }
     
 }
