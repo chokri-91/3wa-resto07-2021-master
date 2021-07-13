@@ -1,5 +1,5 @@
 <template>
-  <h2> <i></i> Cart vue</h2>
+  <h2> Cart vue</h2>
 </template>
 
 <script>
